@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title> siyu 思予 </title>
+    
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/stylesheet.css"> 
+
+<style>
+/* unvisited link */
+a:link {
+  background-color: none;
+  font-family: 'Lucida Console', monospace;
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  background-color: lightyellow;
+}
+
+/* selected link */
+a:active {
+  background-color: white;    
+  color: blue;
+}
+    
+img {
+    width: 45%;
+    height: auto;
+}    
+    
+b { 
+  font-weight: bold;
+}    
+</style>
+    
+<body>
+    
+<div id="textpggrid">
+  <pageheader-left><p2><a href="../make.html">&#10042; Back</a></p2></pageheader-left>
+<div id="title"><p1><b>Paper Circuit with Sensor TUTORIAL: House at Night</b></p1></div>
+<div id="content">
+    <p2>This is tutorial on how to make a house that lights up at night time. You will use a light sensor to send a night time or day time input signal to the LED, so that the LED would give a on or off output signal. To do this, make sure you have Arduino IDE installed on your computer.<br><br> <center>↓ VIDEO TUTORIAL (English/Chinese) ↓</center></p2><br>
+    <video controls>
+    <source src="../../file/make/paperhouse/lightsensor.mp4" type="video/mp4">
+    </video><br><br>
+    <p2>Materials you will need: <br>&#8226; paper house template <a href="../../file/make/paperhouse/housetemplate.pdf">(LINK FOR DOWNLOAD)</a><br>&#8226; conductive copper tape (5mm)<br>&#8226; LED<br>&#8226; glue stick <br>&#8226; Arduino Nano<br>&#8226; Light sensor (I used a sensor from YUROBOT)<br>&#8226; male-to-female wires<br> &#8226; pedestal for placing the house and organizing the wires (I used a left over package from IKEA)<br>&#8226; decoration (I used Template Maker to generate some 3D shapes to create trees and buildings around the house<br></p2><br><br>
+    <p2>1. Making the LED circuit: attach copper tape along the shaded area on the template: <br><center><img src="../../image/making/papercity/03.png"> <img src="../../image/making/papercity/05.png"></center><br><br>2. Once you have finished taping, attach LED to the circuit. REMEMBER, long leg goes to the positive side, or VCC/signal; short leg goes to the negative side, or GND. <br><center><img src="../../image/making/papercity/06.png"> <img src="../../image/making/papercity/07.png"></center><br><br>3. Fold the edges of the house along the dashed line. Then, assemble the house with a glue stick.<br><center><img src="../../image/making/papercity/08.png"></center><br> 4. Build a path from the LED circuit to the Arduino Nano wiring: attach the path template to the bottom of the house, as shown in the image below. <br><center><img src="../../image/making/papercity/09.png"> <img src="../../image/making/papercity/10.png"></center><br><br>5. Attach copper tape to the path by continuing from the previous circuit.<br><center><img src="../../image/making/papercity/12.png"> <img src="../../image/making/papercity/14.png"></center><br><br>6. Wire the LED (+ to digital pin, - to GND) and the light sensor (OUT to analog pin, + to 3V, - to GND) with male-to-female wire to Arduino Nano. For the LED wiring, I taped down the female side of the wire to the paper circuit with copper tape. <br><center><img src="../../image/making/papercity/17.png"> <img src="../../image/making/papercity/16.png"></center><br><br> 7. Program the light sensor via Arduino IDE. Here is the program I have uploaded: <pre>
+    const int darkLevel = 5;
+    int lightValue;
+    int lightsensor=A0;
+    int LED=10;
+
+    void setup() {
+    pinMode(lightsensor, INPUT);
+    pinMode(LED, OUTPUT);
+    Serial.begin(9600);
+    }
+
+    void loop() {
+    lightValue = analogRead(lightsensor);
+    Serial.println(lightValue);
+    if (lightValue <= darkLevel) {
+    digitalWrite (LED,HIGH);
+    } else {
+    digitalWrite (LED, LOW);
+    }
+    delay(100);  
+    } 
+    </pre><br> <center>FINISHED!</center> <br> <center><img src="../../image/making/papercity/01.gif"></center></p2>
+    
+    <br><br><br><br><center><p2><a href="../make.html">Back</a></p2></center>    
+    </div>     
+     
+        </div>
+
+</div>
+    
+    </body>        
+</html>
